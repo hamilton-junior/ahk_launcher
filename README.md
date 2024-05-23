@@ -1,4 +1,6 @@
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrainsMono&weight=700&size=85&duration=3000&pause=1500&center=true&vCenter=true&random=false&width=2500&height=90&lines=%3E+ahk_launcher;a+minimal+fork+of+plul%2FPublic-AutoHotKey-Scripts)](https://git.io/typing-svg)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrainsMono&weight=700&size=85&duration=3000&pause=1500&center=true&vCenter=true&random=false&width=2500&height=90&lines=%3E+ahk_launcher;a+minimal+fork+of+plul%2FPublic-AutoHotKey-Scripts)
+
+<p align="center"><img src="https://github.com/dpi0/ahk_launcher/raw/master/demo.gif" width="640" height="360" alt="Demo GIF"/></p>
 
 ## Table of Contents
 - [Requirements](#requirements)
