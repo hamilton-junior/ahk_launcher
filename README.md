@@ -16,7 +16,7 @@
 2. Press **Ctrl + Space** to access the launcher.
 3. Check out [launcher_commands.ahk](https://github.com/dpi0/ahk_launcher/blob/8c5ed0215d8b56ba0e061dfaa9cd19eb452501a8/launcher_commands.ahk) for adding your custom commands.
 
-**NOTE:** By default launcher_gui.ahk, launcher_commands.ahk , and run.ahkare in the same directory, edit the `# include` in run.ahk and launcher_gui.ahk to your needs.
+**NOTE:** By default launcher_gui.ahk, launcher_commands.ahk , and run.ahk are in the same directory, edit the `# include` in run.ahk and launcher_gui.ahk to your needs.
 
 
 ## Code Changes Overview

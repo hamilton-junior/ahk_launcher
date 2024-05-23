@@ -1,6 +1,3 @@
-
-
-
 ; AUTO EXECUTE
 gui_autoexecute:
     ; Initialize color variables for GUI
@@ -33,7 +30,7 @@ gui_spawn:
     Gui, Margin, 16, 16
     Gui, Color, 000000, 000000
     Gui, +AlwaysOnTop -SysMenu +ToolWindow -caption
-    Gui, Font, s22, Inter
+    Gui, Font, s22, Arial
 
     ; Add an Edit control to the GUI with specified options, variable, and associated label
     Gui, Add, Edit, %gui_control_options% vvar gFindus
