@@ -21,9 +21,9 @@ Switch var {
     case "g" . A_Space:
         openUrl("http://www.google.com/search?q=REPLACEME", "Google")
     case "xi" . A_Space:
-        openUrl("firefox.exe -incognito https://www.google.com/search?safe=off&q=REPLACEME", "Firefox Incognito")
+        openUrl("firefox.exe --private-window https://www.google.com/search?safe=off&q=REPLACEME", "Firefox Incognito")
     case "xg" . A_Space:
-        openUrl("firefox.exe -guest https://www.google.com/search?safe=off&q=REPLACEME", "firefox Guest")
+        openUrl("firefox.exe -P guest https://www.google.com/search?safe=off&q=REPLACEME", "firefox Guest")
     case "y" . A_Space:
         openUrl("https://www.youtube.com/results?search_query=REPLACEME", "YouTube")
     case "m" . A_Space:
