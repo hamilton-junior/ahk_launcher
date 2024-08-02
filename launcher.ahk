@@ -22,8 +22,29 @@ destroyBox() {
     WinActivate ; Focus back on the last window
 }
 
+open(Command) {
+    destroyBox()
+    Run, %Command%, , UseErrorLevel ; Run command and check if it succeeded
+    if (ErrorLevel) {
+        showBox() ; If there was an error, show the box again
+    }
+}
+
+handleCommand(Command) {
+    Switch Command {
+        case "uni":
+            open("appwiz.cpl")
+        case "rec":
+            open("::{645FF040-5081-101B-9F08-00AA002F954E}")
+        case "rege":
+            open("C:\Windows\regedit.exe")
+        case "file":
+            open("explorer.exe")
+    }
+}
+
 showBox() {
-    ; If box is open, destroyBox
+    ; If box is "open", destroyBox
     if currentBoxState != "closed"
     {
         destroyBox()
@@ -42,11 +63,11 @@ showBox() {
     Gui, Color, %windowColor%, %controlColor%
     Gui, Font, s%fontSize%, %fontName%
 
-    Gui, Add, Edit, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200, %editBoxDefaultText% ; Add "Edit" GUI
+    Gui, Add, Edit, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200 vCommand gInstantSearch, %editBoxDefaultText% ; Add "Edit" GUI
 
     Gui, Show, Center ; Horizontally and vertically center the GUI 
 
-    currentBoxState := "open"
+    currentBoxState := "open" ; Update the state of box to "open"
 }
 
 Hotkey, %hotkeyBox%, showBox
@@ -56,4 +77,7 @@ GuiEscape:
     destroyBox()
     return
 
-
+InstantSearch:
+    Gui, Submit, NoHide
+    handleCommand(Command)
+    return
