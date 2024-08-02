@@ -16,11 +16,11 @@ global editBoxNoOfRows := 1
 ; global commandBoxPlaceholderText := "enter command..."
 ; global searchBoxPlaceholderText := "enter..."
 
-#WinActivateForce
+; #WinActivateForce
 destroyBox() {
   currentBoxState = "closed"
   Gui, Destroy
-  WinActivate ; Focus back on the last window
+  ; WinActivate ; Focus back on the last window
 }
 
 boxStyleAndOptions() {
