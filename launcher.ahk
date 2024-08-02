@@ -1,5 +1,6 @@
 #NoEnv ; Avoids checking empty variables to see if they are environment variables (recommended for all new scripts).
 #SingleInstance force ; Skips the dialog box and replaces the old instance automatically
+#Include %A_ScriptDir%\user_commands.ahk
 
 global hotkeyBox := "#Space"
 global currentBoxState := "closed"
@@ -50,23 +51,6 @@ runSearchUrl(searchBoxUrl, searchQuery) {
   run %url%
 }
 
-
-handleCommand(commandQuery) {
-  Switch commandQuery {
-    case "uni":
-        open("appwiz.cpl")
-    case "rec":
-        open("::{645FF040-5081-101B-9F08-00AA002F954E}")
-    case "rege":
-        open("C:\Windows\regedit.exe")
-    case "file":
-        open("explorer.exe")
-    case "g" . A_Space:
-      showSearchBox("https://www.google.com/search?q=", "Google", "c4285F4")
-    case "y" . A_Space:
-      showSearchBox("https://www.youtube.com/results?search_query=", "YouTube", "cFF0000")
-  }
-}
 
 showCommandBox() {
   ; If box is "open", destroyBox
