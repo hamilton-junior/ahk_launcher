@@ -30,6 +30,8 @@
 
 ## 💥 Demo
 
+https://github.com/user-attachments/assets/8f6a5016-8f50-452f-8beb-7b41847728b4
+
 ## ⚙️ Requirements
 
 - Latest AutoHotKey v1 version (app currently doesn't support AHK v2)
