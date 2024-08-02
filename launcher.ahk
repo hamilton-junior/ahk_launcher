@@ -54,6 +54,10 @@ handleCommand(Command) {
             open("C:\Windows\regedit.exe")
         case "file":
             open("explorer.exe")
+        case "g" . A_Space:
+          showSearchBox("https://www.google.com/search?q=", "Google")
+        case "y" . A_Space:
+          showSearchBox("https://www.youtube.com/results?search_query=", "YouTube")
     }
 }
 
@@ -74,6 +78,24 @@ showBox() {
     currentBoxState := "open" ; Update the state of box to "open"
 }
 
+showSearchBox(url, title) {
+    destroyBox()
+
+    global searchBoxUrl := url
+    searchBoxTitle := title
+
+    boxStyleAndOptions()
+
+    Gui, Add, Text, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200, %searchBoxTitle%
+    Gui, Add, Edit, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200 vSearchTerm -WantReturn
+    Gui, Add, Button, x-1 y-1 w0 h0 +default gSearchEnter
+
+    GuiControl, Disable, Command ; Move focus from prev box to this box
+    Gui, Show, Center
+
+    currentBoxState = "search"
+}
+
 Hotkey, %hotkeyBox%, showBox
 
 ; Esc to destroyBox
@@ -85,3 +107,13 @@ InstantSearch:
     Gui, Submit, NoHide
     handleCommand(Command)
     return
+
+SearchEnter:
+  Gui, Submit
+  destroyBox()
+  
+  url := searchBoxUrl . SearchTerm
+
+  run %url%
+
+  return
