@@ -62,9 +62,9 @@ handleCommand(commandQuery) {
     case "file":
         open("explorer.exe")
     case "g" . A_Space:
-      showSearchBox("https://www.google.com/search?q=", "Google")
+      showSearchBox("https://www.google.com/search?q=", "Google", "c4285F4")
     case "y" . A_Space:
-      showSearchBox("https://www.youtube.com/results?search_query=", "YouTube")
+      showSearchBox("https://www.youtube.com/results?search_query=", "YouTube", "cFF0000")
   }
 }
 
@@ -85,15 +85,16 @@ showCommandBox() {
   currentBoxState := "open" ; Update the state of box to "open"
 }
 
-showSearchBox(url, title) {
+showSearchBox(url, title, titleColor) {
   destroyBox() ; Destroy previous box
 
   global searchBoxUrl := url
   searchBoxTitle := title
+  searchBoxTitleColor := titleColor
 
   boxStyleAndOptions()
 
-  Gui, Add, Text, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200, %searchBoxTitle% ; Add search engine "title"
+  Gui, Add, Text, w%editBoxWidth% r%editBoxNoOfRows% %searchBoxTitleColor% -E0x200, %searchBoxTitle% ; Add search engine "title"
   Gui, Add, Edit, w%editBoxWidth% r%editBoxNoOfRows% %fontColor% -E0x200 vsearchQuery -WantReturn, %searchBoxPlaceholderText% ; Add "Edit" GUI for engine query
   Gui, Add, Button, x-1 y-1 w0 h0 +default gSearchEnter
 
