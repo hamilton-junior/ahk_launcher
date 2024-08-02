@@ -2,7 +2,7 @@
 #SingleInstance force ; Skips the dialog box and replaces the old instance automatically
 #Include %A_ScriptDir%\user_commands.ahk
 
-global hotkeyBox := "#Space"
+global hotkeyBox := "#Space" ; Complete list of hotkeys, https://www.autohotkey.com/docs/v1/KeyList.htm
 global currentBoxState := "closed"
 
 global marginX := 10
@@ -69,7 +69,7 @@ showCommandBox() {
   currentBoxState := "open" ; Update the state of box to "open"
 }
 
-showSearchBox(url, title, titleColor) {
+showSearchBox(url, title, titleColor := "cFFFFFF") {
   destroyBox() ; Destroy previous box
 
   global searchBoxUrl := url

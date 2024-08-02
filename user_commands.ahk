@@ -15,5 +15,7 @@ handleCommand(commandQuery) {
       showSearchBox("https://www.google.com/search?q=", "Google", "c4285F4")
     case "y" . A_Space:
       showSearchBox("https://www.youtube.com/results?search_query=", "YouTube", "cFF0000")
+    case "le" . A_Space:
+      showSearchBox("https://letterboxd.com/search/", "LetterBoxd")
   }
 }
