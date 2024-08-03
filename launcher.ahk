@@ -106,6 +106,8 @@ CommandEnter:
 ; Run url
 SearchEnter:
   Gui, Submit
+  
+  destroyBox()
 
   runSearchUrl(searchBoxUrl, searchQuery)
 
