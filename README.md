@@ -25,7 +25,7 @@
 
 ## ✨ Features
 
-- **Run Commands**: Remap any Windows command to a easy to remember shortcut.
+- **Run Commands**: Remap any Windows command to an easy to remember shortcut.
 - **Query Search Engines**: Add any number of search engines and launch it using keywords to search directly from any window.
 
 ## 💥 Demo
@@ -34,14 +34,14 @@ https://github.com/user-attachments/assets/8f6a5016-8f50-452f-8beb-7b41847728b4
 
 ## ⚙️ Requirements
 
-- Latest AutoHotKey v1 version (app currently doesn't support AHK v2)
+- Latest AutoHotKey v1 version **(app currently doesn't support AHK v2)**
 - Running Windows 10 or above
 
 ## ⚡ Installation
 
 Get the latest [AutoHotKey v1 exe](https://www.autohotkey.com/download/ahk-install.exe) or use [winstall](https://winstall.app/apps/AutoHotkey.AutoHotkey) with [winget](https://github.com/microsoft/winget-cli)
 
-as of Aug 2024, `v1.1.37.02` is the latest AutoHotKey version
+as of Aug 2024, `v1.1.37.02` is the latest AutoHotKey v1 version
 
 ```powershell
 winget install --id=AutoHotkey.AutoHotkey -v "1.1.37.02" -e
@@ -57,16 +57,14 @@ git clone https://github.com/dpi0/ahk_launcher.git
 
 Extract `ahk_launcher.zip` and move the extracted folder to a rather fixed location.
 
-Extract ahk_launcher.zip and place it in a fixed location.
-
 To run the script on boot, create a shortcut of `launcher.ahk` in `C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`.
 
 - `launcher.ahk` handles the UI and functionality.
-- Customize `user_commands.ahk` for commands and search engines.
+- `user_commands.ahk` is for custom commands and search engines.
 
 After running `launcher.ahk` use the hotkey **`Win + Space`** to launch the app.
 
-`user_commands.ahk` is what users are expected to modify to their own needs. It contains simple switch case statements where users can add any number of **commands** and **search engines**.
+`user_commands.ahk` is what users are expected to modify to their own needs. It contains simple switch case statements where users can add any number of commands and search engines.
 
 ### 🔍 Adding search engine
 
