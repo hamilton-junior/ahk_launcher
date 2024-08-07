@@ -1,5 +1,5 @@
 ; AUTO EXECUTE
-gui_autoexecute:
+gui_autoexecute() {
     ; Initialize color variables for GUI
     cForeground := "c" . "FFFFFF"
     cBlue := "c" . "00BFFF"
@@ -9,48 +9,52 @@ gui_autoexecute:
     ; -E0x200 removes border around Edit controls
 
     ; Initialize GUI state and other variables
-    gui_state = closed
+    gui_state := closed
     search_urls := 0
-    return
+    }
 
 
 ; LAUNCH GUI
-^Space::
-gui_spawn:
+^CapsLock::gui_spawn()
+
+gui_spawn() {
     ; Check if GUI is already open and close it if so
     if gui_state != closed
     {
         gui_destroy()
         return
     }
+    
 
-    gui_state = main
+    gui_state := main
 
     ; Set GUI properties
-    Gui, Margin, 16, 16
-    Gui, Color, 000000, 000000
-    Gui, +AlwaysOnTop -SysMenu +ToolWindow -caption
-    Gui, Font, s22, Arial
+    mainGUI := Gui()
+    mainGUI.MarginX := 16
+    mainGUI.MarginY := 16
+    mainGUI.BackColor := 0x000000
+    mainGUI.Opt(+AlwaysOnTop -SysMenu +ToolWindow -Caption)
+    mainGUI.SetFont(s22, Arial)
 
     ; Add an Edit control to the GUI with specified options, variable, and associated label
-    Gui, Add, Edit, %gui_control_options% vvar gFindus
+    Gui.AddEdit(%gui_control_options%, vvar)
 
     ; Show the GUI with the specified title
-    Gui, Show, , myGUI
+    mainGUI.Show(Center)
     return
-
+}
 
 ; GUI FUNCTIONS AND SUBROUTINES
-GuiEscape:
+GuiEscape(){
     gui_destroy()
     return
-
+}
 ; Callback function when the text changes in the input field.
-Findus:
-    Gui, Submit, NoHide
+Findus(){
+    mainGUI.Submit(false)
     #Include %A_ScriptDir%\launcher_commands.ahk
     return
-
+}
 #WinActivateForce
 gui_destroy() {
     global gui_state
@@ -70,7 +74,7 @@ gui_destroy() {
 
 
 ;SEARCH ENGINES
-uriEncode(str) {
+urlEncoder(str) {
     f = %A_FormatInteger%
     SetFormat, Integer, Hex
     If RegExMatch(str, "^\w+:/{0,2}", pr)
@@ -78,19 +82,19 @@ uriEncode(str) {
     StringReplace, str, str, `%, `%25, All
     Loop
         If RegExMatch(str, "i)[^\w\.~%/:]", char)
-           StringReplace, str, str, %char%, % "%" . SubStr(Asc(char),3), All
+            StringReplace, str, str, %char%, % "%" . SubStr(Asc(char),3), All
         Else Break
     SetFormat, Integer, %f%
     Return, pr . str
 }
 
-gui_search_add_elements:
+gui_search_add_elements() {
     Gui, Add, Text, %gui_control_options% %cBlue%, %gui_search_title%
     Gui, Add, Edit, %gui_control_options% %cBlue% vgui_SearchEdit -WantReturn
     Gui, Add, Button, x-10 y-10 w1 h1 +default ggui_SearchEnter
     GuiControl, Disable, var
     Gui, Show, AutoSize
-    return
+    }
 
 gui_search(url, title) {
     global
@@ -99,21 +103,21 @@ gui_search(url, title) {
     {
         gui_state = search
         gui_search_title := title  ; Set the search title
-        Gosub, gui_search_add_elements
+        gui_search_add_elements()
     }
     search_urls := search_urls + 1
     search_url%search_urls% := url
 }
 
-gui_SearchEnter:
+gui_SearchEnter() {
     ; Submit the search and run the specified URL with the query
     Gui, Submit
     gui_destroy()
-    query_safe := uriEncode(gui_SearchEdit)
+    query_safe := urlEncoder(gui_SearchEdit)
     Loop, %search_urls%
     {
         StringReplace, search_final_url, search_url%A_Index%, REPLACEME, %query_safe%
         run %search_final_url%
     }
     search_urls := 0
-    return
+}

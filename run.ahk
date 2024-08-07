@@ -1,8 +1,5 @@
-#NoEnv
 #SingleInstance force
-#MaxHotkeysPerInterval 9999
 
-Gosub, gui_autoexecute
-return
+gui_autoexecute()
 
 #include %A_ScriptDir%\launcher_gui.ahk
