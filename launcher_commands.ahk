@@ -4,7 +4,7 @@ openUrl(searchQuery, title) {
 }
 open(param) {
     gui_destroy()
-    Run %param%
+    Run param
 }
 
 SpecialCommand(command) {
@@ -13,7 +13,7 @@ SpecialCommand(command) {
     if (command = "rel") {
         Reload
     } else if (command = "name") {
-        Send, your_name lol
+        MsgBox("your name lol", "bamboozled xd","t5")
     }
 }
 
