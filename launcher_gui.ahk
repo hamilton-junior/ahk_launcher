@@ -39,7 +39,7 @@ gui_spawn() {
 
     ; Show the GUI with the specified title
     mainGUI.Show("Center")
-    mainGUI.OnEvent("Change", Findus())
+    mainGUI.vvar.OnEvent("Change", Findus())
 
     return
 }
@@ -103,9 +103,9 @@ UrlEncode(input) {
 
 
 gui_search_add_elements() {
-    mainGUI.AddText(gui_control_options cBlue, gui_search_title)
-    mainGUI.AddEdit(gui_control_options cBlue " vgui_SearchEdit -WantReturn")
-    mainGUI.AddButton("Default w1 h1 Hidden", "gui_SearchEnter")
+    mainGUI.AddText(gui_control_options, gui_search_title)
+    mainGUI.AddEdit(gui_control_options . " vgui_SearchEdit -WantReturn")
+    mainGUI.AddButton("Default w1 h1 Hidden vgui_SearchEnter")
     mainGUI.control("Disabled", "var")
     mainGUI.Show("AutoSize")
 }
@@ -124,6 +124,7 @@ gui_search(url, title) {
 gui_SearchEnter() {
     ; Submit the search and run the specified URL with the query
     mainGUI.Submit()
+    var := vgui_SearchEdit.Value
     gui_destroy()
     encodedURL := UrlEncode(var.Value)
     finalUrl := StrReplace(encodedURL, "REPLACEME", encodedURL)
